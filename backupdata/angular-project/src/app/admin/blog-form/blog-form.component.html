@@ -1,0 +1,64 @@
+<div class="dash-header">
+  <div class="dash-title">
+      <h1>{{pageTitle}}</h1>
+  </div>
+</div>
+<div class="blog-form">
+  <form [formGroup]="blogForm" (ngSubmit)="onSubmit()">
+    <div class="form-group form-row">
+        <label class="col-md-3">Title <span class="required">*</span></label>
+        <div class="col-md-9">
+          <input type="text" formControlName="title" class="form-control" placeholder="Title" required>
+          <div *ngIf="title.invalid && (title.dirty || title.touched)" class="error">
+            <div *ngIf="title.errors">
+              Title is required.
+            </div>
+          </div>
+        </div>
+    </div>
+    <div class="form-group form-row">
+      <label class="col-md-3">Is Featured</label>
+      <div class="col-md-9">
+        <input type="radio" formControlName="is_featured" value="1" /> Yes
+        <input type="radio" formControlName="is_featured" value="0" /> No
+      </div>
+    </div>
+    <div class="form-group form-row">
+      <label class="col-md-3">Is Active</label>
+      <div class="col-md-9">
+        <input type="radio" formControlName="is_active" value="1" /> Yes
+        <input type="radio" formControlName="is_active" value="0" /> No
+      </div>
+    </div>
+    <div class="form-group form-row">
+      <label class="col-md-3">Upload Image</label>
+      <div class="col-md-9">
+        <input type="file" id="image" (change)="onSelectedFile($event)" />
+        <div [innerHTML]="uploadError" class="error"></div>
+        <div *ngIf="imagePath">
+          <br />
+          <img [src]="imagePath" width="100px">
+        </div>
+      </div>
+    </div>
+    <div class="form-group form-row">
+        <label class="col-md-3">Description <span class="required">*</span></label>
+        <div class="col-md-9">
+          <textarea formControlName="description" rows="5" class="form-control" placeholder="Description" required></textarea>
+          <div *ngIf="description.invalid && (description.dirty || description.touched)" class="error">
+            <div *ngIf="description.errors">
+              Description is required.
+            </div>
+          </div>
+        </div>
+    </div>
+    <div class="form-group form-row">
+        <label class="col-md-3"></label>
+        <div class="col-md-9">
+          <input type="hidden" formControlName="id">
+          <button type="submit" [disabled]="!blogForm.valid" class="btn btn-primary">Save</button>
+        </div>
+    </div>
+  </form>
+</div>
+{{error}}

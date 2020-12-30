@@ -1,0 +1,20 @@
+<div class="right-widget recent-post">
+    <h3>Recent Blogs</h3>
+    <div *ngFor="let blog of blogs">
+      <a [routerLink]="['/blog', blog.id]">
+          <div class="rb-box">
+              <div class="rb-box-img">
+                  <img src="{{blog.image}}" alt="{{blog.title}}" />
+              </div>
+              <div class="rb-box-desc">
+                  <h4>{{blog.title}}</h4>
+                  <p>Posted On: {{blog.created_at | date:'mediumDate'}}</p>
+              </div>
+          </div>
+      </a>
+    </div>
+    <div class="service-error" *ngIf="error">
+      <h3>{{error.errorTitle}}</h3>
+      <p>{{error.errorDesc}}<p>
+    </div>
+  </div>

@@ -1,0 +1,40 @@
+<nav class="navbar navbar-expand-md navbar-dark bg-blue">
+  <div class="container">
+    <a class="navbar-brand" routerLink="/" (click)="setPageTitle('Blogger')">
+      <img src="assets/images/logo.png" alt="Angular Project" />
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a routerLink="/" routerLinkActive="acitve" class="nav-link" (click)="setPageTitle('Blogger')">Home</a>
+        </li>
+        <li class="nav-item">
+          <a routerLink="/page/about" routerLinkActive="acitve" class="nav-link" (click)="setPageTitle('About')">About</a>
+        </li>
+        <li class="nav-item">
+          <a routerLink="/page/services" routerLinkActive="acitve" class="nav-link" (click)="setPageTitle('Services')">Services</a>
+        </li>
+        <li class="nav-item">
+          <a routerLink="/contact" routerLinkActive="acitve" class="nav-link" (click)="setPageTitle('Contact')">Contact</a>
+        </li>
+        <li class="nav-item">
+          <a routerLink="/blog" routerLinkActive="acitve" class="nav-link">Blog</a>
+        </li>
+      </ul>
+      <ul class="navbar-nav  ml-auto">
+        <li class="nav-item" *ngIf="!isLoggedIn">
+          <a routerLink="/login" class="nav-link">Login</a>
+        </li>
+        <li class="nav-item" *ngIf="isLoggedIn">
+          <a routerLink="/admin" class="nav-link">Admin Dashboard</a>
+        </li>
+        <li class="nav-item" *ngIf="isLoggedIn">
+            <a routerLink="/login" class="nav-link">Logout</a>
+          </li>
+      </ul>
+    </div>
+  </div>
+</nav>
