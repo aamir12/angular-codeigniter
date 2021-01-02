@@ -1,6 +1,10 @@
 <nav class="navbar navbar-expand-md navbar-dark bg-blue">
   <div class="container">
-    <a class="navbar-brand" [routerLink]="['/']">
+    <a
+      class="navbar-brand"
+      [routerLink]="['/']"
+      (click)="setPageTitle('Blogger')"
+    >
       <img src="assets/images/logo.png" alt="Angular Project" />
     </a>
     <button
@@ -21,16 +25,48 @@
           routerLinkActive="active"
           [routerLinkActiveOptions]="{ exact: true }"
         >
-          <a class="nav-link" [routerLink]="['/']">Home</a>
+          <a
+            class="nav-link"
+            [routerLink]="['/']"
+            (click)="setPageTitle('Blogger')"
+            >Home</a
+          >
         </li>
         <li class="nav-item" routerLinkActive="active">
-          <a class="nav-link" [routerLink]="['/page', 'about']">About</a>
+          <a
+            class="nav-link"
+            [routerLink]="['/page', 'about']"
+            (click)="setPageTitle('About us')"
+            >About</a
+          >
         </li>
         <li class="nav-item" routerLinkActive="active">
-          <a class="nav-link" [routerLink]="['/contact']">Contact</a>
+          <a
+            class="nav-link"
+            [routerLink]="['/contact']"
+            (click)="setPageTitle('Contact us')"
+            >Contact</a
+          >
         </li>
         <li class="nav-item" routerLinkActive="active">
-          <a class="nav-link" [routerLink]="['/blog']">Blog</a>
+          <a
+            class="nav-link"
+            [routerLink]="['/blog']"
+            (click)="setPageTitle('Blogs')"
+            >Blog</a
+          >
+        </li>
+      </ul>
+
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item" *ngIf="!isLoggedIn">
+          <a routerLink="/login" class="nav-link">Login</a>
+        </li>
+        <li class="nav-item" *ngIf="isLoggedIn">
+          <a routerLink="/admin" class="nav-link">Admin Dashboard</a>
+        </li>
+        <li class="nav-item" *ngIf="isLoggedIn">
+          <a routerLink="/login" class="nav-link">Logout</a>
         </li>
       </ul>
     </div>

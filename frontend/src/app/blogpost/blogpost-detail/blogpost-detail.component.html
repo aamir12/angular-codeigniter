@@ -2,40 +2,25 @@
   <div class="container">
     <div class="row">
       <div class="col-md-8">
-        <div class="blog-left">
-          <h1>Sample blog post 1</h1>
+        <div class="blog-left" *ngIf="blog">
+          <h1>{{ blog.title }}</h1>
           <div class="posted-on">
-            <p>by <span>RSGiTECH</span> on <span>October 22, 2018</span></p>
+            <p>
+              by <span>{{ blog.author }}</span> on
+              <span>{{ blog.created_at | date: "mediumDate" }}</span>
+            </p>
           </div>
           <div class="detail-img">
-            <img src="assets/images/img1.jpg" alt="blog1" />
+            <img src="{{ blog.image }}" alt="blog1" />
           </div>
           <div class="blog-desc">
-            <p>
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry standard dummy text
-              ever since the 1500s, when an unknown printer took a galley of
-              type and scrambled it to make a type specimen book. It has
-              survived not only five centuries, but also the leap into
-              electronic typesetting, remaining essentially unchanged. It was
-              popularised in the 1960s with the release of Letraset sheets
-              containing Lorem Ipsum passages, and more recently with desktop
-              publishing software like Aldus PageMaker including versions of
-              Lorem Ipsum.
-            </p>
-            <p>
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry standard dummy text
-              ever since the 1500s, when an unknown printer took a galley of
-              type and scrambled it to make a type specimen book. It has
-              survived not only five centuries, but also the leap into
-              electronic typesetting, remaining essentially unchanged. It was
-              popularised in the 1960s with the release of Letraset sheets
-              containing Lorem Ipsum passages, and more recently with desktop
-              publishing software like Aldus PageMaker including versions of
-              Lorem Ipsum.
-            </p>
+            {{ blog.short_desc }}
           </div>
+        </div>
+
+        <div class="service-error" *ngIf="blogError">
+          <h1>{{ blogError.errorTitle }}</h1>
+          <h3>{{ blogError.errorDesc }}</h3>
         </div>
       </div>
       <div class="col-md-4">

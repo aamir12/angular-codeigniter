@@ -4,6 +4,7 @@ import { Injectable } from '@angular/core';
 import { Blogpost } from './blogpost';
 import { catchError } from 'rxjs/operators';
 import { throwError } from 'rxjs';
+import { Category } from './category';
 
 @Injectable({
   providedIn: 'root',
@@ -43,6 +44,24 @@ export class BlogpostService {
   getFeaturedBlogs() {
     return this.http
       .get<Blogpost[]>(this.ServerUrl + 'api/featured_blogs')
+      .pipe(catchError(this._handleError));
+  }
+
+  getBlog(id) {
+    return this.http
+      .get<Blogpost>(`${this.ServerUrl}api/blog/${id}`)
+      .pipe(catchError(this._handleError));
+  }
+
+  getRecentBlogs() {
+    return this.http
+      .get<Blogpost[]>(this.ServerUrl + 'api/recent_blogs')
+      .pipe(catchError(this._handleError));
+  }
+
+  getCategories() {
+    return this.http
+      .get<Category[]>(this.ServerUrl + 'api/categories')
       .pipe(catchError(this._handleError));
   }
 }

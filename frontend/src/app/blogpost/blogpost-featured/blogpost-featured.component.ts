@@ -14,8 +14,12 @@ export class BlogpostFeaturedComponent implements OnInit {
 
   ngOnInit() {
     this.blogService.getFeaturedBlogs().subscribe(
-      (data) => (this.blogs = data),
-      (error) => (this.error = error)
+      (data) => {
+        this.blogs = data;
+      },
+      (error) => {
+        this.error = error;
+      }
     );
   }
 }

@@ -9,6 +9,9 @@ import { HeaderComponent } from './common/header/header.component';
 import { FooterComponent } from './common/footer/footer.component';
 import { BannerComponent } from './common/banner/banner.component';
 import { PageNotFoundComponent } from './common/page-not-found/page-not-found.component';
+import { AdminModule } from './admin/admin.module';
+import { AuthModule } from './auth/auth.module';
+import { httpInterceptorProviders } from './http-interceptors';
 
 @NgModule({
   declarations: [
@@ -23,9 +26,11 @@ import { PageNotFoundComponent } from './common/page-not-found/page-not-found.co
     HttpClientModule,
     BlogpostModule,
     CmspageModule,
+    AdminModule,
+    AuthModule,
     AppRoutingModule,
   ],
-  providers: [Title],
+  providers: [Title, httpInterceptorProviders],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
